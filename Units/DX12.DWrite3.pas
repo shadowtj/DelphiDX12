@@ -594,7 +594,7 @@ type
 
     IDWriteAsyncResult = interface(IUnknown)
         ['{CE25F8FD-863B-4D13-9651-C1F88DC73FE2}']
-        function GetWaitHandle(): HANDLE; stdcall;
+        function GetWaitHandle(): THANDLE; stdcall;
         function GetResult(): HResult; stdcall;
     end;
 
@@ -781,24 +781,15 @@ type
 
     IDWriteFontSet1 = interface(IDWriteFontSet)
         ['{7E9FDA85-6C92-4053-BC47-7AE3530DB4D3}']
-        function GetMatchingFonts(const fontProperty: TDWRITE_FONT_PROPERTY; const fontAxisValues: PDWRITE_FONT_AXIS_VALUE;
-            fontAxisValueCount: UINT32; out matchingFonts: IDWriteFontSet1): HResult; stdcall;
+        function GetMatchingFonts(const fontProperty: TDWRITE_FONT_PROPERTY; const fontAxisValues: PDWRITE_FONT_AXIS_VALUE; fontAxisValueCount: UINT32; out matchingFonts: IDWriteFontSet1): HResult; stdcall;
         function GetFirstFontResources(out filteredFontSet: IDWriteFontSet1): HResult; stdcall;
-        function GetFilteredFonts(const properties: PDWRITE_FONT_PROPERTY; propertyCount: UINT32;
-            selectAnyProperty: boolean; out filteredFontSet: IDWriteFontSet1): HResult; stdcall; overload;
-        function GetFilteredFonts(const fontAxisRanges: PDWRITE_FONT_AXIS_RANGE; fontAxisRangeCount: UINT32;
-            selectAnyRange: boolean; out filteredFontSet: IDWriteFontSet1): HResult; stdcall; overload;
-        function GetFilteredFonts(const indices: PUINT32; indexCount: UINT32; out filteredFontSet: IDWriteFontSet1): HResult; stdcall;
-        function GetFilteredFontIndices(const properties: PDWRITE_FONT_PROPERTY; propertyCount: UINT32;
-            selectAnyProperty: boolean; out indices: PUINT32; maxIndexCount: UINT32; out actualIndexCount: UINT32): HResult;
-            stdcall; overload;
-        function GetFilteredFontIndices(const fontAxisRanges: PDWRITE_FONT_AXIS_RANGE; fontAxisRangeCount: UINT32;
-            selectAnyRange: boolean; out indices: PUINT32; maxIndexCount: UINT32; out actualIndexCount: UINT32): HResult;
-            stdcall; overload;
-        function GetFontAxisRanges(out fontAxisRanges: PDWRITE_FONT_AXIS_RANGE; maxFontAxisRangeCount: UINT32;
-            out actualFontAxisRangeCount: UINT32): HResult; stdcall; overload;
-        function GetFontAxisRanges(listIndex: UINT32; out fontAxisRanges: PDWRITE_FONT_AXIS_RANGE;
-            maxFontAxisRangeCount: UINT32; out actualFontAxisRangeCount: UINT32): HResult; stdcall; overload;
+        function GetFilteredFonts(const properties: PDWRITE_FONT_PROPERTY; propertyCount: UINT32; selectAnyProperty: boolean; out filteredFontSet: IDWriteFontSet1): HResult; stdcall; overload;
+        function GetFilteredFonts(const fontAxisRanges: PDWRITE_FONT_AXIS_RANGE; fontAxisRangeCount: UINT32; selectAnyRange: boolean; out filteredFontSet: IDWriteFontSet1): HResult; stdcall; overload;
+        function GetFilteredFonts(const indices: PUINT32; indexCount: UINT32; out filteredFontSet: IDWriteFontSet1): HResult; stdcall; overload;
+        function GetFilteredFontIndices(const properties: PDWRITE_FONT_PROPERTY; propertyCount: UINT32; selectAnyProperty: boolean; out indices: PUINT32; maxIndexCount: UINT32; out actualIndexCount: UINT32): HResult; stdcall; overload;
+        function GetFilteredFontIndices(const fontAxisRanges: PDWRITE_FONT_AXIS_RANGE; fontAxisRangeCount: UINT32; selectAnyRange: boolean; out indices: PUINT32; maxIndexCount: UINT32; out actualIndexCount: UINT32): HResult; stdcall; overload;
+        function GetFontAxisRanges(out fontAxisRanges: PDWRITE_FONT_AXIS_RANGE; maxFontAxisRangeCount: UINT32; out actualFontAxisRangeCount: UINT32): HResult; stdcall; overload;
+        function GetFontAxisRanges(listIndex: UINT32; out fontAxisRanges: PDWRITE_FONT_AXIS_RANGE; maxFontAxisRangeCount: UINT32; out actualFontAxisRangeCount: UINT32): HResult; stdcall; overload;
         function GetFontFaceReference(listIndex: UINT32; out fontFaceReference: IDWriteFontFaceReference1): HResult; stdcall;
         function CreateFontResource(listIndex: UINT32; out fontResource: IDWriteFontResource): HResult; stdcall;
         function CreateFontFace(listIndex: UINT32; out fontFace: IDWriteFontFace5): HResult; stdcall;
